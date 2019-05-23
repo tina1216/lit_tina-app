@@ -41,7 +41,7 @@ end
 get '/search' do
   keyword = params[:keyword]
   unless keyword.blank?
-    @contents = Contribution.where('shopname like ? OR coffee_taste like ? OR food_variation like ? OR for_working like ? OR text like ? OR image like ? OR wifi like ?' "%#{keyword.to_i}%", "%#{keyword.to_i}%","%#{keyword.to_i}%", "%#{keyword.to_i}%", "%#{keyword.to_i}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
+    @contents = Contribution.where('shopname like ? OR coffee_taste like ? OR food_variation like ? OR for_working like ? OR text like ? OR image like ? OR wifi like ?', "%#{keyword.to_i}%", "%#{keyword.to_i}%","%#{keyword.to_i}%", "%#{keyword.to_i}%", "%#{keyword.to_i}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
   else
     @contents = Contribution.all.order("id desc")
   end
