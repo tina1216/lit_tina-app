@@ -38,11 +38,10 @@ post '/post/:id' do
   erb :post
 end
 
-
 get '/search' do
   keyword = params[:keyword]
   unless keyword.blank?
-    @contents = Contribution.where('shopname like ? OR coffee_taste like ? OR food_variation like ? OR for_working like ? OR text like ? OR image like ? OR wifi like ? OR laidback like ? OR dark like ? OR light like ? OR lively like ? OR quiet like ? OR station like? OR bitwalk like ? OR farsta like ? OR hidden like ? OR town like ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%","%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    @contents = Contribution.where('shopname like ? OR coffee_taste like ? OR food_variation like ? OR for_working like ? OR text like ? OR image like ? OR wifi like ? OR laidback like ? OR dark like ? OR light like ? OR lively like ? OR quiet like ? OR station like? OR bitwalk like ? OR farsta like ? OR hidden like ? OR town like ?', "%#{keyword.to_i}%", "%#{keyword}%","%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword]}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
   else
     @contents = Contribution.all.order("id desc")
   end
@@ -205,12 +204,6 @@ post "/mypage" do
   @contents = user.contributions.all
 end
 
-post '/search' do
-  keyword = params[:keyword]
-  @keywords = Contribution.where('content like ?', "%#{params[:keyword]}%")
-  erb :index
-end
-
 post '/goods/delete/:id' do
   g = Good.find_by(contribution_id: params[:id], user_id: session[:user]).destroy
 
@@ -227,9 +220,9 @@ get '/delete/:id' do
   redirect '/mypage'
 end
 
-post "/edit/:id" do
+get "/edit/:id" do
   @content = Contribution.find(params[:id])
-  erb :edit
+  erb :mypage
 end
 
 post '/renew/:id' do
