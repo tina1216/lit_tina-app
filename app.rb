@@ -42,7 +42,7 @@ end
 get '/search' do
   keyword = params[:keyword]
   unless keyword.blank?
-    @contents = Contribution.where('shopname like ? OR atomos like ? OR coffee_taste like ? OR food_variation like ? OR for_working like ? OR location like ? OR text like ? OR image like ? OR wifi like ? OR user_id like ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%","%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    @contents = Contribution.where('shopname like ? OR coffee_taste like ? OR food_variation like ? OR for_working like ? OR text like ? OR image like ? OR wifi like ? OR laidback like ? OR dark like ? OR light like ? OR lively like ? OR quiet like ? OR station like? OR bitwalk like ? OR farsta like ? OR hidden like ? OR town like ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%","%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
   else
     @contents = Contribution.all.order("id desc")
   end
