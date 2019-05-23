@@ -1,0 +1,179 @@
+<div class="container">
+  <form action="/renew/<%= @content.id %>" method="post" enctype="multipart/form-data">
+
+    <div class="new-items">
+      <p><i class="fas fa-store-alt fa-lg my-black"></i>  お店の名前</p>
+      <input class="new_form_textbox" type="text" name="shopname" value="<%= @content.shopname %>">
+    </div>
+
+    <%# 電源の数 %>
+    <div class="new-items">
+      <p><i class="fas fa-plug fa-lg my-black"></i>  電源席の数</p>
+        <div class="new_form_charger">
+          <% for i in 1..5 %>
+            <% if (6 - i) == @content.charger %>
+              <input id="charger0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="charger" value="<%= (6 - i).to_s %>" checked="checked">
+              <label for="charger0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+              <% else %>
+              <input id="charger0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="charger" value="<%= (6 - i).to_s %>">
+              <label for="charger0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+
+    <%# wifi %>
+    <div class="new-items">
+      <p><i class="fas fa-wifi fa-lg my-black "></i>  Wi-Fi環境</p>
+        <div class="new_form_wifi">
+          <% for i in 1..5 %>
+            <% if (6 - i) == @content.wifi %>
+              <input id="wifi0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="wifi" value="<%= (6 - i).to_s %>" checked="checked">
+              <label for="wifi0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+              <% else %>
+              <input id="wifi0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="wifi" value="<%= (6 - i).to_s %>">
+              <label for="wifi0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <%# coffee taste %>
+    <div class="new-items">
+      <p><i class="fas fa-coffee fa-lg my-black "></i>  コーヒーの質</p>
+      <div class="new_form_coffee">
+        <% for i in 1..5 %>
+            <% if (6 - i) == @content.coffee_taste %>
+              <input id="coffee0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="coffee_taste" value="<%= (6 - i).to_s %>" checked="checked">
+              <label for="coffee0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+              <% else %>
+              <input id="coffee0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="coffee_taste" value="<%= (6 - i).to_s %>">
+              <label for="coffee0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+            <% end %>
+          <% end %>
+    </div>
+    </div>
+
+    <%# food variety %>
+    <div class="new-items">
+      <p><i class="fas fa-utensils fa-lg my-black"></i>  フードメニューの種類</p>
+        <div class="new_form_food">
+          <% for i in 1..5 %>
+            <% if (6 - i) == @content.food_variation %>
+              <input id="food0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="food_variation" value="<%= (6 - i).to_s %>" checked="checked">
+              <label for="food0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+              <% else %>
+              <input id="food0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="food_variation" value="<%= (6 - i).to_s %>">
+              <label for="food0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+
+    <%# for working? %>
+    <div class="new-items">
+      <p><i class="fas fa-laptop fa-lg my-black"></i>  作業するのに向いているか</p>
+        <div class="new_form_working">
+          <% for i in 1..5 %>
+            <% if (6 - i) == @content.for_working %>
+              <input id="working0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="for_working" value="<%= (6 - i).to_s %>" checked="checked">
+              <label for="working0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+              <% else %>
+              <input id="working0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="for_working" value="<%= (6 - i).to_s %>">
+              <label for="working0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+
+    <%# お店の雰囲気 %>
+    <div class="new-items_text">
+    <p><i class="fas fa-music fa-lg my-black"></i>  お店の雰囲気</p>
+      <div class="new_form_text">
+        <% if @content.laidback == true %>
+          <label for="atomos01"><input type="checkbox" name="laidback" value="laidback" checked="checked">開放感がある</label>
+          <% else %>
+          <label for="atomos01"><input type="checkbox" name="laidback" value="laidback">開放感がある</label>
+        <% end %>
+
+        <% if @content.dark == true %>
+          <label for="atomos02"><input id="atomos02" type="checkbox" name="dark" value="dark" checked="checked">暗い</label>
+          <% else %>
+          <label for="atomos02"><input id="atomos02" type="checkbox" name="dark" value="dark">暗い</label>
+        <% end %>
+
+        <% if @content.light == true %>
+          <label for="atomos03"><input id="atomos03" type="checkbox" name="light" value="light" checked="checked">明るい</label>
+          <% else %>
+          <label for="atomos03"><input id="atomos03" type="checkbox" name="light" value="light">明るい</label>
+        <% end %>
+
+        <% if @content.lively == true %>
+          <label for="atomos04"><input id="atomos04" type="checkbox" name="lively" value="lively" checked="checked">活気がある</label>
+          <% else %>
+           <label for="atomos04"><input id="atomos04" type="checkbox" name="lively" value="lively">活気がある</label>
+        <% end %>
+
+        <% if @content.quiet == true %>
+          <label for="atomos05"><input id="atomos05" type="checkbox" name="quiet" value="quiet" checked="checked">静か</label>
+          <% else %>
+          <label for="atomos05"><input id="atomos05" type="checkbox" name="quiet" value="quiet">静か</label>
+        <% end %>
+      </div>
+    </div>
+
+    <%# location %>
+    <div class="new-items_text">
+      <p><i class="fas fa-map-marked-alt fa-lg my-black"></i>  ロケーション</p>
+        <div class="new_form_text">
+
+          <% if @content.quiet == true %>
+            <label for="location01"><input id="location01" type="checkbox" name="station" value="station" checked="checked">駅チカ</label>
+            <% else %>
+            <label for="location01"><input id="location01" type="checkbox" name="station" value="station">駅チカ</label>
+          <% end %>
+
+          <% if @content.bitwalk == true %>
+            <label for="location02"><input id="location02" type="checkbox" name="bitwalk" value="bitwalk" checked="checked">少し歩く</label>
+            <% else %>
+            <label for="location02"><input id="location02" type="checkbox" name="bitwalk" value="bitwalk" >少し歩く</label>
+          <% end %>
+
+          <% if @content.farsta == true %>
+            <label for="location03"><input id="location03" type="checkbox" name="farsta" value="farsta" checked="checked">駅から遠い</label>
+            <% else %>
+            <label for="location03"><input id="location03" type="checkbox" name="farsta" value="farsta">駅から遠い</label>
+          <% end %>
+
+          <% if @content.hidden == true %>
+            <label for="location04"><input id="location04" type="checkbox" name="hidden" value="hidden" checked="checked">隠れ家的</label>
+            <% else %>
+            <label for="location04"><input id="location04" type="checkbox" name="hidden" value="hidden">隠れ家的</label>
+          <% end %>
+
+          <% if @content.town == true %>
+            <label for="location05"><input id="location05" type="checkbox" name="town" value="town" checked="checked">街中</label>
+            <% else %>
+            <label for="location05"><input id="location05" type="checkbox" name="town" value="town">街中</label>
+          <% end %>
+        </div>
+    </div>
+
+      <%# 写真アップロード %>
+      <div class="new_form_img">
+        <p>Image</p>
+        <label><input type="file" name="file" value="<%= @content.image %>"><label>
+      </div>
+
+      <div class="new_form_textbox">
+        <label for="text">コメント</label>
+        <textarea class="textbox" name="text"><%= @content.text %></textarea>
+      </div>
+
+    <input type="submit" name="submit" value="Repost">
+
+  </form>
+
+    <a class="btn_back" href="/">BACK</a>
+  </div>
+</div>

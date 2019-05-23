@@ -1,0 +1,157 @@
+<div class="container">
+<div class="post_single_box">
+	<div class="sub-container post_single">
+
+		<div class="post_username_box">
+			<p><%= User.find(@content.user_id).user_name %></p>
+		</div>
+
+		<% unless @content.image.empty? %>
+			<img src ="<%= @content.image %>" class="post_img_single" />
+		<% end %>
+
+			<%# shop name %>
+			<div class="form-items_container_post_single">
+				<div class="star_container_post_single">
+					<p><%= @content.shopname %></p>
+				</div>
+			</div>
+
+		<div class="form_box_post_single">
+			<%# 電源 %>
+			<div class="new-items_post_single">
+				<p><i class="fas fa-plug fa-lg my-black"></i>  電源の数</p>
+				<div class="star_container_post_single">
+					<% for i in 1..5 %>
+						<% if i <= @content.charger %>
+								<p><i class="fas fa-star my-yellow fa-fw"></i></p>
+							<% else %>
+								<p><i class="far fa-star my-grey fa-fw"></i></P>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+
+			<%# wifi %>
+			<div class="new-items_post_single">
+			<p><i class="fas fa-wifi fa-lg my-black"></i>  Wi-Fi</p>
+				<div class="star_container_post_single">
+				<% for i in 1..5 %>
+					<% if i <= @content.wifi %>
+							<p><i class="fas fa-star my-yellow fa-fw"></i></p>
+						<% else %>
+							<p><i class="far fa-star my-grey fa-fw"></i></p>
+					<% end %>
+				<% end %>
+				</div>
+			</div>
+
+			<%# コーヒーのQuality %>
+			<div class="new-items_post_single">
+			<p><i class="fas fa-coffee fa-lg my-black"></i>  コーヒーのクオリティ</p>
+				<div class="star_container_post_single">
+				<% for i in 1..5 %>
+					<% if i <= @content.coffee_taste %>
+							<p><i class="fas fa-star my-yellow fa-fw"></i></p>
+						<% else %>
+							<p><i class="far fa-star my-grey fa-fw"></i></p>
+					<% end %>
+				<% end %>
+				</div>
+			</div>
+
+			<%# food_variation %>
+			<div class="new-items_post_single">
+				<p><i class="fas fa-utensils fa-lg my-black"></i>  フードメニューの種類</p>
+					<div class="star_container_post_single">
+						<% for i in 1..5 %>
+						<% if i <= @content.food_variation %>
+								<p><i class="fas fa-star my-yellow fa-fw"></i></p>
+							<% else %>
+								<p><i class="far fa-star my-grey fa-fw"></i></p>
+						<% end %>
+					<% end %>
+					</div>
+			</div>
+
+			<%# 作業に向いているか %>
+			<div class="new-items_post_single">
+				<p><i class="fas fa-laptop fa-lg my-black "></i>  作業に向いているか</p>
+				<div class="star_container_post_single">
+				<% for i in 1..5 %>
+						<% if i <= @content.for_working %>
+								<p><i class="fas fa-star my-yellow fa-fw"></i></p>
+							<% else %>
+								<p><i class="far fa-star my-grey fa-fw"></i></p>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+
+			<%# お店の雰囲気 %>
+			<div class="new-items_post_single">
+				<p><i class="fas fa-music fa-lg my-black"></i>  お店の雰囲気</p>
+				<div class="checkbox_answer_post_single">
+					<% if @content.laidback == true %>
+						<p>開放感がある</p>
+					<% end %>
+
+					<% if @content.dark == true %>
+						<p>暗い</p>
+					<% end %>
+
+					<% if @content.light == true %>
+						<p>明るい</p>
+					<% end %>
+
+					<% if @content.lively == true %>
+						<p>活気がある</p>
+					<% end %>
+
+					<% if @content.quiet == true %>
+						<p>静か</p>
+					<% end %>
+				</div>
+			</div>
+
+			<%# location %>
+			<div class="new-items_post_single">
+				<p><i class="fas fa-map-marked-alt fa-lg my-black"></i>  ロケーション</p>
+				<div class="checkbox_answer_post_single">
+					<% if @content.quiet == true %>
+						<p>駅チカ</p>
+					<% end %>
+
+					<% if @content.bitwalk == true %>
+						<p>少し歩く</p>
+					<% end %>
+
+					<% if @content.farsta == true %>
+						<p>駅から遠い</p>
+					<% end %>
+
+					<% if @content.hidden == true %>
+						<p>隠れ家的</p>
+					<% end %>
+
+					<% if @content.town == true %>
+						<p>街中</p>
+					<% end %>
+				</div>
+			</div>
+
+			<div class="text_answer_post_single">
+				<p>コメント</p>
+				<div class="text_box_post_single">
+					<p><%= @content.text %></p>
+				</div>
+			</div>
+
+		</div>
+
+		</div>
+		<div class="btn_box_post_single">
+			<a class="btn black single" href="<%= session[:url_now] %>">BACK</a>
+		</div>
+</div>
+</div>

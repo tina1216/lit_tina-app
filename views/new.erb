@@ -1,0 +1,114 @@
+<div class="container new">
+<div class="post_single_box">
+	<div class="sub-container post_single new">
+
+    <form action="/new" method="post" enctype="multipart/form-data">
+
+    <%# お店の名前 %>
+    <div class="new-items">
+      <p><i class="fas fa-store-alt fa-lg my-black"></i>  お店の名前</p>
+      <input class="new_form_textbox" type="text" name="shopname">
+    </div>
+
+    <%# 電源の数 %>
+    <div class="new-items">
+      <p><i class="fas fa-plug fa-lg my-black"></i>  電源席の数</p>
+        <div class="new_form_charger">
+          <% for i in 1..5 %>
+            <input id="charger0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="charger" value="<%= (6 - i).to_s %>">
+            <label for="charger0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+          <% end %>
+        </div>
+    </div>
+
+    <%# wifi %>
+    <div class="new-items">
+      <p><i class="fas fa-wifi fa-lg my-black "></i>  Wi-Fi環境</p>
+        <div class="new_form_wifi">
+          <% for i in 1..5 %>
+            <input id="wifi0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="wifi" value="<%= (6 - i).to_s %>">
+            <label for="wifi0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+          <% end %>
+        </div>
+      </div>
+
+      <%# coffee taste %>
+    <div class="new-items">
+      <p><i class="fas fa-coffee fa-lg my-black "></i>  コーヒーの質</p>
+      <div class="new_form_coffee">
+        <% for i in 1..5 %>
+          <input id="coffee0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="coffee_taste" value="<%= (6 - i).to_s %>">
+          <label for="coffee0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+        <% end %>
+    </div>
+    </div>
+
+    <%# food variety %>
+    <div class="new-items">
+      <p><i class="fas fa-utensils fa-lg my-black"></i>  フードメニューの種類</p>
+        <div class="new_form_food">
+          <% for i in 1..5 %>
+            <input id="food0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="food_variation" value="<%= (6 - i).to_s %>">
+            <label for="food0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+          <% end %>
+        </div>
+    </div>
+
+    <%# for working? %>
+    <div class="new-items">
+      <p><i class="fas fa-laptop fa-lg my-black"></i>  作業するのに向いているか</p>
+        <div class="new_form_working">
+          <% for i in 1..5 %>
+            <input id="working0<%= (6 - i).to_s %>" class="form_checkbox" type="radio" name="for_working" value="<%= (6 - i).to_s %>">
+            <label for="working0<%= (6 - i).to_s %>"><i class="fas fa-star fa-2x"></i></label>
+          <% end %>
+        </div>
+    </div>
+
+    <%# お店の雰囲気 %>
+    <div class="new-items_text">
+    <p><i class="fas fa-music fa-lg my-black"></i>  お店の雰囲気</p>
+      <div class="new_form_text">
+        <label for="atomos01"><input type="checkbox" name="laidback" value="laidback">開放感がある</label>
+        <label for="atomos02"><input type="checkbox" name="dark" value="dark">暗い</label>
+        <label for="atomos03"><input type="checkbox" name="light" value="light">明るい</label>
+        <label for="atomos04"><input type="checkbox" name="lively" value="lively">活気がある</label>
+        <label for="atomos05"><input type="checkbox" name="quiet" value="quiet">ノリノリ</label>
+      </div>
+    </div>
+
+    <%# location %>
+    <div class="new-items_text">
+      <p><i class="fas fa-map-marked-alt fa-lg my-black"></i>  ロケーション</p>
+        <div class="new_form_text">
+          <label for="location01"><input id="location01" type="checkbox" name="station" value="station">駅チカ</label>
+          <label for="location02"><input id="location02" type="checkbox" name="bitwalk" value="bitwalk">少し歩く</label>
+          <label for="location03"><input id="location03" type="checkbox" name="farsta" value="farsta">駅から遠い</label>
+          <label for="location04"><input id="location04" type="checkbox" name="hidden" value="hidden">隠れ家的</label>
+          <label for="location05"><input id="location05" type="checkbox" name="town" value="town">街中</label>
+        </div>
+    </div>
+
+    <%# 写真アップロード %>
+    <div class="new_form_img">
+      <p>Image</p>
+        <p><input type="file" name="file" value="image"></p>
+    </div>
+
+    <div class="new_form_textbox">
+      <label for="text"><p>コメント</p></label>
+        <textarea class="textbox" name="text" value="text"></textarea>
+    </div>
+
+     </div>
+
+    <div class="btn_box_post_single">
+    <div class="btn_subbox_post_single">
+      <input class="btn_new black" type="submit" name="submit" value="POST">
+      </form>
+      <a href="/"><div class="btn_new">＜ BACK</div></a>
+    </div>
+    </div>
+
+</div>
+</div>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>タイトル</title>
+  <link rel="stylesheet" href="/assets/css/reset.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/sp-style.css">
+
+
+</head>
+
+<body>
+
+
+    <% unless session[:user] %>
+    <div class="header-content">
+      <div class="header-left">
+        <h2 class="title">Chill&Charge</h2>
+      </div>
+
+      <div class="header-side">
+
+        <form class="search-form" action="/search" method="get">
+          <input class="search-box" type="search" name="keyword" placeholder="search">
+        </form>
+
+        <a class="header_menu" href="/signin">Sign in</a>
+        <a class="header_menu" href="/signup">Sign up</a>
+      </div>
+    </div>
+
+      <div class="header-content--sp">
+        <%# header--sp %>
+        <div class="cp_cont">
+          <div class="cp_offcm01">
+            <input type="checkbox" id="cp_toggle01">
+            <label for="cp_toggle01"><span></span></label>
+            <div class="cp_menu">
+              <ul>
+              <li class="li_title--sp"><p class="title--sp">Chill&Charge</p></li>
+              <li class="search--sp"><form action="/search" method="get">
+                  <input class="search-box sp" type="search" name="keyword" placeholder="search">
+                  </form>
+              </li>
+              <li><a class="header_menu" href="/signin">Sign in</a></li>
+              <li><a class="header_menu" href="/signup">Sign up</a></li>
+              </ul>
+            </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <% else %>
+      <div class="header-content">
+        <div class="header-left">
+          <h2 class="title">Chill&Charge</h2>
+        </div>
+
+        <div class="header-side">
+          <div class="header-side_items">
+            <a href="/" class="header_menu">
+              <p><i class="fas fa-home"></i></p>
+            </a>
+
+            <div class="user-name_box">
+              <a href="/mypage" class="header_menu">
+              <p class="user-name"><i class="fas fa-user-alt my-white fa-fw"></i>  <%= User.find(session[:user]).user_name %></p>
+              </a>
+            </div>
+
+            <a class="header_menu" href="/signout"><p><i class="fas fa-sign-out-alt my-white"></i>  Sign out</p></a>
+          </div>
+        </div>
+
+        <%# <div class="profile_img_container">
+            <%= User.find(session[:user]).profile_img %>
+          <%# </div>
+        </div> %>
+        </div>
+      </div>
+
+      <div class="header-content--sp">
+        <%# header--sp %>
+        <div class="cp_cont">
+          <div class="cp_offcm01">
+            <input type="checkbox" id="cp_toggle01">
+            <label for="cp_toggle01"><span></span></label>
+            <div class="cp_menu">
+              <ul>
+              <li class="li_title--sp"><p class="title--sp">Chill&Charge</p></li>
+              <li class="li_user-name--sp"><a href="/mypage" class="header_menu">
+                  <p><i class="fas fa-user-circle my-white"></i> <%= User.find(session[:user]).user_name %></p>
+                  </a>
+              </li>
+              <li><a href="/" class="header_menu">
+              <p><i class="fas fa-home"></i>  Home</p></a>
+              </li>
+              <li><a href="/mypage" class="header_menu">
+                  <p class="user-name sp"><i class="fas fa-user-alt my-white fa-fw"></i>  My page</p>
+                  </a>
+              </li>
+              <li><a class="header_menu" href="/signout"><p><i class="fas fa-sign-out-alt my-white"></i>  Sign out</p></a></li>
+              <li class="search--sp"><form action="/search" method="get">
+                  <input class="search-box" type="search" name="keyword" placeholder="search">
+                  </form>
+              </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+
+  <div class="wrapper">
+    <%= yield %>
+  </div>
+
+  <div class="footer"></div>
+</body>
+</html>

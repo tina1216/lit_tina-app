@@ -1,0 +1,4 @@
+	<div class="user_items">
+				<div class="user_name_container"><%= User.find(profile_img) %></div>
+				<p><%= User.find(session[:user]).user_name %></p>
+			</div>

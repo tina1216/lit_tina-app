@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="sub-container_mypage">
+    <div class="mypage_menu">
+      <a href="/good_page" class="btn black"><p><i class="fas fa-heart my-white "></i>  LIKED</p></a>
+      <p><%= @user.user_name %> </p>
+
+
+			<div class="username_box">
+				<p><%= User.find(session[:user]).profile_img %></p>
+			</div>
+
+    </div>
+
+
+    <div class="sub-container">
+
+        <% @contents.each do |content| %>
+
+          <div class="post">
+
+              <div class="username_box">
+                <p><%= User.find(session[:user]).user_name %></p>
+              </div>
+
+            <div class="post_img_container">
+              <a href="/post/<%= content.id %>" method="post">
+                <% unless content.image.empty? %>
+                  <img src ="<%= content.image %>" class="post_img" />
+                <% end %>
+              </a>
+            </div>
+
+
+          <a href="/post/<%= content.id %>" method="post">
+
+            <%# shop name %>
+            <div class="form_shopname_box">
+              <div class="form_shopname_title">
+                <p><%= content.shopname %></p>
+              </div>
+            </div>
+
+            <div class="star_box">
+              <%# 電源 %>
+              <div class="form-items_container">
+                <p class="charger"><i class="fas fa-plug my-grey fa-fw"></i></p>
+                <div class="star_container">
+                <% for i in 1..5 %>
+                  <% if i <= content.charger %>
+                      <p><i class="fas fa-star my-yellow fa-fw"></i></p>
+                    <% else %>
+                      <p><i class="far fa-star my-supergrey fa-fw"></i></P>
+                  <% end %>
+                <% end %>
+                </div>
+              </div>
+
+
+              <%# wifi %>
+              <div class="form-items_container">
+                <p class="wifi"><i class="fas fa-wifi my-grey fa-fw"></i></p>
+                <div class="star_container">
+                  <% for i in 1..5 %>
+                    <% if i <= content.wifi %>
+                        <p><i class="fas fa-star my-yellow fa-fw"></i></p>
+                      <% else %>
+                        <p><i class="far fa-star my-supergrey fa-fw"></i></p>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+
+              <%# コーヒーのQuality %>
+              <div class="form-items_container">
+                <p class="coffee"><i class="fas fa-coffee my-grey  fa-fw"></i></p>
+                <div class="star_container">
+                  <% for i in 1..5 %>
+                    <% if i <= content.coffee_taste %>
+                        <p><i class="fas fa-star my-yellow fa-fw"></i></p>
+                      <% else %>
+                        <p><i class="far fa-star my-supergrey fa-fw"></i></p>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+
+            </div>
+
+          </a>
+
+          <div class="btn-mypage-area">
+            <a href="/delete/<%= content.id %>" >
+              <i class="far fa-trash-alt my-grey"></i>
+            </a>
+            <a href="/edit/<%= content.id %>">
+            <i class="far fa-edit my-grey"></i>
+            </a>
+          </div>
+
+          </div>
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</div>

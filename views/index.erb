@@ -1,0 +1,109 @@
+<div class="key-visual_container">
+	<div class="form-area">
+
+		<div class="postbtn_container">
+			<p><a href="/new" class="btn_post">+</a></p>
+		</div>
+	</div>
+</div>
+
+<%# post %>
+<div class="container">
+<div class="sub-container">
+
+	<% @contents.each do |content| %>
+
+		<div class="post">
+
+			<%= User.find(content.user_id).profile_img %>
+
+			<div class="username_box">
+				<p><%= User.find(content.user_id).user_name %></p>
+			</div>
+
+			<div class="post_img_container">
+				<a href="/post/<%= content.id %>" method="post">
+					<% unless content.image.empty? %>
+						<img src ="<%= content.image %>" class="post_img" />
+					<% end %>
+				</a>
+			</div>
+
+				<a href="/post/<%= content.id %>" method="post">
+
+					<%# shop name %>
+					<div class="form_shopname_box">
+						<div class="form_shopname_title">
+							<p><%= content.shopname %></p>
+						</div>
+					</div>
+
+					<div class="star_box">
+						<%# 電源 %>
+						<div class="form-items_container">
+							<p class="charger"><i class="fas fa-plug my-grey fa-fw"></i></p>
+						<div class="star_container">
+							<% for i in 1..5 %>
+								<% if i <= content.charger %>
+										<p><i class="fas fa-star my-yellow fa-fw"></i></p>
+									<% else %>
+										<p><i class="far fa-star my-supergrey fa-fw"></i></P>
+								<% end %>
+							<% end %>
+						</div>
+					</div>
+
+						<%# wifi %>
+						<div class="form-items_container">
+							<p class="wifi"><i class="fas fa-wifi my-grey fa-fw"></i></p>
+							<div class="star_container">
+							<% for i in 1..5 %>
+								<% if i <= content.wifi %>
+										<p><i class="fas fa-star my-yellow fa-fw"></i></p>
+									<% else %>
+										<p><i class="far fa-star my-supergrey fa-fw"></i></p>
+								<% end %>
+							<% end %>
+							</div>
+						</div>
+
+						<%# コーヒーのQuality %>
+						<div class="form-items_container">
+							<p class="coffee"><i class="fas fa-coffee my-grey fa-fw"></i></p>
+							<div class="star_container">
+								<% for i in 1..5 %>
+									<% if i <= content.coffee_taste %>
+											<p><i class="fas fa-star my-yellow fa-fw"></i></p>
+										<% else %>
+											<p><i class="far fa-star my-supergrey fa-fw"></i></p>
+									<% end %>
+								<% end %>
+							</div>
+						</div>
+
+					</div>
+				</a>
+
+					<div class="form-items_container heart">
+					<% unless session[:user].blank? %>
+						<% good = User.find(session[:user]).goods.where(contribution_id: content.id) %>
+						<% if good.blank? %>
+								<form  action="/goods/<%= content.id %>" method="post">
+									<button class="like-btn" type="submit"><i class="far fa-heart fa-2x my-red fa-fw"></i></button>
+								</form>
+							<% else %>
+							<form action="/goods/delete/<%= content.id %>" method="post">
+								<button class="like-btn" type="submit"><i class="fas fa-heart fa-2x my-red fa-fw"></i></button>
+							</form>
+						<% end %>
+						<p><%= Good.where({contribution_id: content.id}).length %></p>
+					<% end %>
+					</div>
+
+				</div>
+
+	<% end %>
+
+	</div>
+</div>
+</div>

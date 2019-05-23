@@ -1,0 +1,40 @@
+<div class="container_signin">
+  <div class="signin_form_area">
+    <form action="/signup" method="post">
+
+      <%# 写真アップロード %>
+      <div class="new_form_img">
+        <p>Image</p>
+          <p><input type="file" name="profile_img" value="image"></p>
+      </div>
+
+      <%# email %>
+      <div class="form-items">
+        <p class="email">Email</p>
+        <input class="email" type="text" name="mail" placeholder="Eメール">
+      </div>
+
+      <%# user_name %>
+      <div class="form-items">
+        <p class="user_name">User Name</p>
+        <input class="user_name" type="text" name="user_name" placeholder="User name">
+      </div>
+
+      <%# password %>
+      <div class="form-items">
+        <p class="password">Password</p>
+        <input class ="password" type="password" name="password" placeholder="パスワード">
+      </div>
+
+      <div class="form-items">
+        <p class="password">Password (confirm) </p>
+        <input class ="password" type="password" name="password_confirmation" placeholder="パスワードの確認">
+      </div>
+
+         <div class="btn-area">
+        <input class="btn login" type="submit" value="Sign up">
+      </div>
+
+    </form>
+  </div>
+</div>
