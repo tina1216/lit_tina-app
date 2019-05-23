@@ -2,3 +2,7 @@
 				<div class="user_name_container"><%= User.find(profile_img) %></div>
 				<p><%= User.find(session[:user]).user_name %></p>
 			</div>
+
+OR laidback like ? OR dark like ? OR light like ? OR lively like ? OR quiet like ? OR station like? OR bitwalk like ? OR farsta like ? OR hidden like ? OR town like ?'
+
+, "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"
