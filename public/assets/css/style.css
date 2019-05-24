@@ -461,7 +461,6 @@ input.textbox {
 }
 
 .post_img {
-  border-radius: 5px 5px 0 0;
   max-width: 100%;
   height: 170px;
   object-fit: cover;

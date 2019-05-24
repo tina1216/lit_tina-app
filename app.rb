@@ -221,7 +221,7 @@ get '/delete/:id' do
 end
 
 get "/edit/:id" do
-  @content = Contribution.find(params[:id])
+  content = Contribution.find(params[:id])
   erb :mypage
 end
 
@@ -319,8 +319,4 @@ post '/renew/:id' do
   })
 
   redirect '/mypage'
-end
-
-get '/mypage/:id' do
-
 end

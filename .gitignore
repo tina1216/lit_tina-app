@@ -3,3 +3,6 @@
 *.sass-cache
 *.map
 *.css.map
+credntial.json
+.env
+*.db
