@@ -26,3 +26,13 @@ class Good < ActiveRecord::Base
   belongs_to :contribution
   belongs_to :user
 end
+
+class String
+  def to_bool
+    if self == 'true'
+      return true
+    else
+      return false
+    end
+  end
+end

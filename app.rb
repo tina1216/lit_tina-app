@@ -41,7 +41,7 @@ end
 get '/search' do
   keyword = params[:keyword]
   unless keyword.blank?
-    @contents = Contribution.where('shopname like ? OR coffee_taste like ? OR food_variation like ? OR for_working like ? OR text like ? OR image like ? OR wifi like ?', "%#{keyword.to_i}%", "%#{keyword.to_i}%","%#{keyword.to_i}%", "%#{keyword.to_i}%", "%#{keyword.to_i}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
+    @contents = Contribution.where('shopname like ? OR coffee_taste like ? OR food_variation like ? OR for_working like ? OR text like ? OR image like ? OR wifi like ? OR laidback like ? OR dark like ? OR light like ? OR lively like ? OR quiet like ? OR station like? OR bitwalk like ? OR farsta like ? OR hidden like ? OR town like ?', "%#{keyword}%", "%#{keyword.to_i}%","%#{keyword.to_i}%", "%#{keyword.to_i}%", "%#{keyword.to_i}%", "%#{keyword}%", "%#{keyword.to_i}%", "%#{keyword.to_bool}%", "%#{keyword.to_bool}%", "%#{keyword.to_bool}%", "%#{keyword.to_bool}%", "%#{keyword.to_bool}%", "%#{keyword.to_bool}%", "%#{keyword.to_bool}%", "%#{keyword.to_bool}%", "%#{keyword.to_bool}%", "%#{keyword.to_bool}%")
   else
     @contents = Contribution.all.order("id desc")
   end
@@ -98,7 +98,7 @@ end
 post '/new' do
   @user = User.find(session[:user])
 
-   if params[:laidback]
+  if params[:laidback]
     laidback = true
     else
     laidback = false
@@ -220,13 +220,18 @@ get '/delete/:id' do
   redirect '/mypage'
 end
 
-get "/edit/:id" do
-  content = Contribution.find(params[:id])
-  erb :mypage
+get '/edit/:id' do
+  @content = Contribution.find(params[:id])
+  erb :edit
+end
+
+post "/edit/:id" do
+  @content = Contribution.find(params[:id])
+  erb :edit
 end
 
 post '/renew/:id' do
-  content = Contribution.find(params[:id])
+  @content = Contribution.find(params[:id])
 
   if params[:laidback]
     laidback = true
@@ -294,7 +299,7 @@ post '/renew/:id' do
     upload = Cloudinary::Uploader.upload(tempfile.path)
     file = upload['url']
   else
-    file = content.image
+    file = @content.image
   end
 
   @content.update({

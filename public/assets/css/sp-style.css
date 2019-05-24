@@ -15,6 +15,11 @@
     display: none;
   }
 
+  .key-visual_container {
+    background-image: url('/img/key-visual01--sp.jpg');
+    object-fit: cover;
+  }
+
   /* humberger menu */
   *,
   *:before,

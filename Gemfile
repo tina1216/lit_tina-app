@@ -20,6 +20,7 @@ gem 'dotenv'
 
 gem 'bcrypt', '~> 3.1.11'
 
+
 group :development do
   gem 'sqlite3'
 end

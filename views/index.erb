@@ -89,11 +89,11 @@
 						<% good = User.find(session[:user]).goods.where(contribution_id: content.id) %>
 						<% if good.blank? %>
 								<form  action="/goods/<%= content.id %>" method="post">
-									<button class="like-btn" type="submit"><i class="far fa-heart fa-2x my-red fa-fw"></i></button>
+									<button class="like-btn" type="submit"><i class="far fa-heart fa-lg my-red"></i></button>
 								</form>
 							<% else %>
 							<form action="/goods/delete/<%= content.id %>" method="post">
-								<button class="like-btn" type="submit"><i class="fas fa-heart fa-2x my-red fa-fw"></i></button>
+								<button class="like-btn" type="submit"><i class="fas fa-heart fa-lg my-red"></i></button>
 							</form>
 						<% end %>
 						<p><%= Good.where({contribution_id: content.id}).length %></p>
