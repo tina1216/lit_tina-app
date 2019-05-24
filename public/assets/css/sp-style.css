@@ -1,4 +1,8 @@
 /* sp用のcss!! */
+@font-face {
+  font-family: 'EightOne';
+  src: url(/assets/EightOne.ttf);
+}
 
 /* header--sp */
 @media screen and (max-width:480px) {
